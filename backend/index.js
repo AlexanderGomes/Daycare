@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const path = require("path");
 
-const port = process.env.PORTS || 5000;
+const port = process.env.PORT || 5000;
 const dbConnect = require("./utils/dbConnect");
 
 //folders
