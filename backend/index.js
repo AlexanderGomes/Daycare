@@ -15,7 +15,6 @@ const stripe = require("./routes/stripe");
 const app = express();
 
 // middleware
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Use JSON parser for all non-webhook routes
