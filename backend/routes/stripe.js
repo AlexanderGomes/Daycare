@@ -127,8 +127,8 @@ router.post(
   "/webhook",
   express.raw({ type: "application/json" }),
   async (req, res) => {
-    let data;
     let eventType;
+    let data;
 
     let webhookSecret = process.env.WEBHOOK;
 
