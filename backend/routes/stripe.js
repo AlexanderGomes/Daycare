@@ -132,27 +132,22 @@ router.post(
 
     let webhookSecret = process.env.WEBHOOK;
 
-    if (webhookSecret) {
-      let event;
-      let signature = req.headers["stripe-signature"];
+    let event;
+    let signature = req.headers["stripe-signature"];
 
-      try {
-        event = stripe.webhooks.constructEvent(
-          req.body,
-          signature,
-          webhookSecret
-        );
-      } catch (err) {
-        console.log(`⚠️  Webhook signature verification failed:  ${err}`);
-        return res.sendStatus(400);
-      }
-
-      data = event.data.object;
-      eventType = event.type;
-    } else {
-      data = req.body.data.object;
-      eventType = req.body.type;
+    try {
+      event = stripe.webhooks.constructEvent(
+        req.body,
+        signature,
+        webhookSecret
+      );
+    } catch (err) {
+      console.log(`⚠️  Webhook signature verification failed:  ${err}`);
+      return res.sendStatus(400);
     }
+
+    data = event.data.object;
+    eventType = event.type;
 
     if (eventType === "checkout.session.completed") {
       fulfillOrder(data);
