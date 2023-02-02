@@ -12,6 +12,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 
+
 const Calendar = ({ data }) => {
   const [popUp, setPopUp] = useState(false);
   const [popUpDebt, setPopUpDebt] = useState(true);
@@ -21,6 +22,8 @@ const Calendar = ({ data }) => {
   const [available, setUnavailable] = useState([]);
 
   const navigate = useNavigate();
+
+  console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY)
 
   useEffect(() => {
     if (data.isAdmin === true) {

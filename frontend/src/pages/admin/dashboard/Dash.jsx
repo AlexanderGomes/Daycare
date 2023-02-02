@@ -18,6 +18,7 @@ const Dash = ({ data }) => {
 
   const [checkin, setCheckin] = useState([]);
 
+
   useEffect(() => {
     if (data.isAdmin === true) {
       setVisible(true);
