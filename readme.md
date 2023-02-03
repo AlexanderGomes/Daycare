@@ -4,15 +4,16 @@ this applications is a personal daycare system that I did for my family.
 
 Visit on: <a href='https://gomesdaycare.herokuapp.com'>www.gomesdaycare.com</a>
 
+
 ## Functionality
 
 clients are required to sign to the website so they can get charged on the daily basis.
 
 the client can do the followings:
--- create a schedule ahead of time and pay for it.
--- see what dates the daycare won't be open (if something happens).
--- check past payments and pending balance.
--- pay for all the schedules through stripe.
+1. create a schedule ahead of time and pay for it.
+2. see what dates the daycare won't be open (if something happens).
+3. check past payments and pending balance.
+4. pay for all the schedules through stripe.
 
 the admin can do the followings:
 -- check-in clients when arriving at the daycare, which creates a charge of $35 on their account, and sends them a message of confirmation.
@@ -26,6 +27,9 @@ the admin can do the followings:
 -- set unavailable dates so clients can see on their calendars.
 
 -- generates the code for the registration of each user and other admins if necessary.
+
+<img width="1040" alt="dashboard" src="https://user-images.githubusercontent.com/98370540/216496234-2a92e76f-51a6-4109-901e-488f16a5ea64.png">
+
 
 ## How to start the Applications
 
