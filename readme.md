@@ -34,7 +34,7 @@ the admin can do the followings:
 <img width="1440" alt="history" src="https://user-images.githubusercontent.com/98370540/216497732-aac52030-bd68-4067-b3d1-059909b1d527.png">
 <img width="1440" alt="checkout" src="https://user-images.githubusercontent.com/98370540/216497445-8f1bf63e-e410-4e66-b538-2c56542a23c9.png">
 
-## How to start the Applications
+## How to start the Application
 
 1. Run npm install from the root directory
 2. cd into frontend and run npm install
