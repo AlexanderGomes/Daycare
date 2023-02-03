@@ -23,6 +23,8 @@ the admin can do the followings:
 
 -- keeps track of the total balance of each user.
 
+-- set unavailable dates so clients can see on their calendars.
+
 -- generates the code for the registration of each user and other admins if necessary.
 
 ## How to start the Applications
