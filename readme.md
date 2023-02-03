@@ -29,6 +29,7 @@ the admin can do the followings:
 6. generates the code for the registration of each user and other admins if necessary.
 
 <img width="1040" alt="dashboard" src="https://user-images.githubusercontent.com/98370540/216496234-2a92e76f-51a6-4109-901e-488f16a5ea64.png">
+<img width="1440" alt="managment" src="https://user-images.githubusercontent.com/98370540/216496954-a983510d-7852-44af-8ac2-52a10569901f.png">
 
 
 ## How to start the Applications
