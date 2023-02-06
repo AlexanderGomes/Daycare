@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Client.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout, reset } from "../../../features/auth/authSlice";
+
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -12,6 +15,9 @@ const Client = ({ data }) => {
 
   const [conf, setConf] = useState(false);
   const { user } = useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -73,7 +79,6 @@ const Client = ({ data }) => {
     setConf(!false);
   }, [conf]);
 
- 
   const MarkLate = async () => {
     try {
       await axios.put(`/api/schedule/checkout/late/balance/${data._id}`);
@@ -88,25 +93,32 @@ const Client = ({ data }) => {
     }
   };
 
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/auth/login");
+  };
+
   return (
     <div className="client__main">
       {data.isAdmin === false && latePopUp === true ? (
         <div className="calendar__popup__color move">
           <div className="calendar__popup__main">
-            <p className="calendar__p">
-              are you sure?
-            </p>
+            <p className="calendar__p">are you sure?</p>
             <p className="calendar__p greyish">
               <span className="calendar__disclaimer"> Disclaimer: </span> any
               mistake will result in financial damage to both the client and the
               daycare
             </p>
-  
+
             <div className="calendar__btns">
               <button className="confirm__btn" onClick={MarkLate}>
                 yes
               </button>
-              <button className="refuse__btn" onClick={() => setLatePopUp(false)}>
+              <button
+                className="refuse__btn"
+                onClick={() => setLatePopUp(false)}
+              >
                 no
               </button>
             </div>

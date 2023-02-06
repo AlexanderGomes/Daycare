@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Client, CheckIn, Schedule, Code } from "../../../components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../../../features/auth/authSlice";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./dash.css";
@@ -18,6 +20,8 @@ const Dash = ({ data }) => {
 
   const [checkin, setCheckin] = useState([]);
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (data.isAdmin === true) {
@@ -69,6 +73,12 @@ const Dash = ({ data }) => {
     setToggleHistory(false);
   };
 
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/auth/login");
+  };
+
   return (
     <div>
       {visible === true ? (
@@ -106,6 +116,9 @@ const Dash = ({ data }) => {
             {toggleClient === true ? (
               <>
                 <div className="input__mv">
+                <button onClick={onLogout} className="profile__logout">
+                  Log out
+                </button>
                   <input
                     type="text"
                     className="dash__search"
@@ -175,7 +188,7 @@ const Dash = ({ data }) => {
 
             {toggleCode === true ? (
               <div className="">
-                <Code data ={data} />
+                <Code data={data} />
               </div>
             ) : (
               ""
