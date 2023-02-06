@@ -29,6 +29,7 @@ const Dash = ({ data }) => {
     }
   }, [data]);
 
+
   useEffect(() => {
     const fetchUsers = async () => {
       const res = await axios.get(`/api/user/info/all`);

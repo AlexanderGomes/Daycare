@@ -2,10 +2,10 @@
 .welcome__main {
   display: flex;
   position: relative;
-  top: 40px;
+  top: 100px;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+
   max-height: 100%;
 }
 
@@ -121,12 +121,9 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 320px) {
+
   .welcome__main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    top: -30px;
+    top: 25px;
   }
 }
