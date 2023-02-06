@@ -94,6 +94,7 @@ color: black;
   border-radius: 12px;
   background-color: aquamarine;
   cursor: pointer;
+  margin-left: 15px;
 }
 
 .profile__name {

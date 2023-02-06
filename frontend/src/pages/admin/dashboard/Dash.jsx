@@ -174,7 +174,7 @@ const Dash = ({ data }) => {
             )}
 
             {toggleCode === true ? (
-              <div className="toggle">
+              <div className="">
                 <Code data ={data} />
               </div>
             ) : (

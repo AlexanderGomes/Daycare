@@ -194,14 +194,14 @@ const checkInUser = asyncHandler(async (req, res) => {
         await order.save();
 
         // //messaging client
-        // client.messages
-        //   .create({
-        //     body: `Gomes Daycare: check-in confirmation date: ${req.body.start}, time: ${times}`,
-        //     from: "+12515128063",
-        //     to: `${clients.phoneNumber}`,
-        //   })
-        //   .then((message) => console.log(message.sid))
-        //   .catch((err) => console.log(err));
+        client.messages
+          .create({
+            body: `Gomes Daycare: check-in confirmation date: ${req.body.start}, time: ${times}`,
+            from: "+12515128063",
+            to: `${clients.phoneNumber}`,
+          })
+          .then((message) => console.log(message.sid))
+          .catch((err) => console.log(err));
         res.status(200).json(savedClient);
       } else {
         res.status(420).send({ msg: "schedule is already done" });
@@ -218,54 +218,27 @@ const checkInUser = asyncHandler(async (req, res) => {
 const checkOutUser = asyncHandler(async (req, res) => {
   const adminUser = await User.findById(req.body.userId);
   const clients = await User.findById(req.body.clientId);
-  const schedule = await Schedule.findOne({
-    userId: clients._id,
-    isAdmin: true,
-  }).sort({ _id: -1 });
-
   const lastCheckedInTime = await CheckIn.findOne({
     clientId: clients._id,
   }).sort({
     _id: -1,
   });
 
-  let currentDate = new Date();
-  const time = currentDate
-    .toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
-    .slice(10, 14);
-    
-  const lateTime = "6:15";
-
-  let currentDates = new Date();
-  const times = currentDates
-    .toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
-    .slice(10, 20);
-
-  let late = "";
-
-  if (time >= lateTime) {
-    late = "late pickup";
-  }
-
   try {
     if (adminUser.isAdmin === true) {
       await clients.updateOne({
         $set: { isCheckIn: false },
       });
+
       await lastCheckedInTime.updateOne(
         { $set: { end: req.body.end } },
         { new: true }
       );
 
-      if (time >= lateTime) {
-        await schedule.updateOne({ $set: { isLate: true } }, { new: true });
-        await schedule.updateOne({ $inc: { price: 15 } }, { new: true });
-      }
-
       //messaging client
       client.messages
         .create({
-          body: `Gomes Daycare: check-out confirmation date: ${req.body.end} time: ${times} ${late}`,
+          body: `Gomes Daycare: check-out confirmation date: ${req.body.end}`,
           from: "+12515128063",
           to: `${clients.phoneNumber}`,
         })
@@ -543,6 +516,35 @@ const updateClient = asyncHandler(async (req, res) => {
   }
 });
 
+const lateClient = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  try {
+    const order = new Schedule({
+      userId: user._id,
+      start: 0,
+      end: 0,
+      price: 15,
+      isAdmin: true,
+      dueDate: 0,
+    });
+    await order.save();
+
+    client.messages
+      .create({
+        body: `GOMES DAYCARE: you were late for pick up, $15 were added to your balance`,
+        from: "+12515128063",
+        to: `${user.phoneNumber}`,
+      })
+      .then((message) => console.log(message.sid))
+      .catch((err) => console.log(err));
+
+    res.status(200).json(order);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+});
+
 module.exports = {
   createSchedule,
   unavailableDates,
@@ -555,4 +557,5 @@ module.exports = {
   getCheckIn,
   getUnavailableDates,
   updateClient,
+  lateClient,
 };

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .client__color {
@@ -54,4 +55,10 @@ left: 0;
 .client__blocked {
   color: rgb(184, 52, 52);
   font-weight: 600;
+}
+
+
+.check__btn__div {
+  display: flex;
+  gap: 30px;
 }

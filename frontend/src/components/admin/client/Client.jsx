@@ -8,6 +8,8 @@ import * as Yup from "yup";
 
 const Client = ({ data }) => {
   const [popUp, setPopUp] = useState(false);
+  const [latePopUp, setLatePopUp] = useState(false);
+
   const [conf, setConf] = useState(false);
   const { user } = useSelector((state) => state.auth);
 
@@ -71,13 +73,48 @@ const Client = ({ data }) => {
     setConf(!false);
   }, [conf]);
 
-  let currentDates = new Date();
-  const times = currentDates
-    .toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
-    .slice(10, 20);
+ 
+  const MarkLate = async () => {
+    try {
+      await axios.put(`/api/schedule/checkout/late/balance/${data._id}`);
+      toast.success("$15 added to clients balance", {
+        duration: 1500,
+      });
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="client__main">
+      {data.isAdmin === false && latePopUp === true ? (
+        <div className="calendar__popup__color move">
+          <div className="calendar__popup__main">
+            <p className="calendar__p">
+              are you sure?
+            </p>
+            <p className="calendar__p greyish">
+              <span className="calendar__disclaimer"> Disclaimer: </span> any
+              mistake will result in financial damage to both the client and the
+              daycare
+            </p>
+  
+            <div className="calendar__btns">
+              <button className="confirm__btn" onClick={MarkLate}>
+                yes
+              </button>
+              <button className="refuse__btn" onClick={() => setLatePopUp(false)}>
+                no
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       {data.isAdmin === false && popUp === true ? (
         <div className="calendar__popup__color move">
           <div className="calendar__popup__main">
@@ -116,9 +153,14 @@ const Client = ({ data }) => {
         <div className="client__color">
           <p className="client__name">{data.name}</p>
           {data.isBlocked === false ? (
-            <button className="check__btn" onClick={() => setPopUp(true)}>
-              Check-in
-            </button>
+            <div className="check__btn__div">
+              <button className="check__btn" onClick={() => setPopUp(true)}>
+                Check-in
+              </button>
+              <button className="check__btn" onClick={() => setLatePopUp(true)}>
+                Late
+              </button>
+            </div>
           ) : (
             <p className="client__unpaid">
               user is blocked!! pending balance of 15 days

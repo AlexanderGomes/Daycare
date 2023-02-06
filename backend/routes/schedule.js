@@ -13,13 +13,14 @@ const {
   getCheckIn,
   updateClient,
   getUnavailableDates,
-  getEarnings,
+  lateClient,
 } = require("../controllers/schedule");
 
 router.post("/", createSchedule);
 router.post("/admin", unavailableDates);
 router.post("/checkin", checkInUser);
 router.put("/checkout", checkOutUser);
+router.put("/checkout/late/balance/:id", lateClient);
 router.get("/:userId", getAllSchedule);
 router.get("/payment/history", paidSchedules);
 router.get("/payment/history/user", getUserData);

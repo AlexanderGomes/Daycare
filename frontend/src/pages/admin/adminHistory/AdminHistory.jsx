@@ -36,7 +36,6 @@ const AdminHistory = ({ data }) => {
 
   let arr = Array.from(schedule);
 
-console.log(arr)
   return (
     <div>
       {visible === true ? (
