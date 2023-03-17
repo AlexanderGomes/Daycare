@@ -1,6 +1,6 @@
 ## Daycare Project with MERN stack
 
-this applications is a personal daycare system that I did for my family,currently receives $12k in monthly payments, made managing everything that happens much easier,  no more keeping information on paper about who’s gonna come this week,  who paid, etc. now all that my parents need to do is use for buttons, check-in, check-out, late and generate registration code
+this applications is a personal daycare system that I did for my family,currently receives $12k in monthly payments, made managing everything that happens much easier,  no more keeping information on paper about who’s gonna come this week,  who paid, etc. now all that my parents need to do is use four buttons, check-in, check-out, late and generate registration code
 
 Visit on: <a href='https://gomesdaycare.herokuapp.com'>www.gomesdaycare.com</a>
 
