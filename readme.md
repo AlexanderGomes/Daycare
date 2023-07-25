@@ -2,7 +2,7 @@
 
 this applications is a personal daycare system that I did for my family,currently receives $12k in monthly payments, made managing everything that happens much easier,  no more keeping information on paper about who’s gonna come this week,  who paid, etc. now all that my parents need to do is use four buttons, check-in, check-out, late and generate registration code
 
-Visit on: <a href='https://gomesdaycare.herokuapp.com'>www.gomesdaycare.com</a>
+clients stopped using 6 months later, they prefer to pay in person, for demonstration on: <a href='https://gomesdaycare.herokuapp.com'>www.gomesdaycare.com</a>
 
 <img width="1040" alt="dashboard" src="https://user-images.githubusercontent.com/98370540/216496234-2a92e76f-51a6-4109-901e-488f16a5ea64.png">
 <img width="1440" alt="managment" src="https://user-images.githubusercontent.com/98370540/216496954-a983510d-7852-44af-8ac2-52a10569901f.png">
