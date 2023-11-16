@@ -171,7 +171,6 @@ const sendCodeToUser = asyncHandler(async (req, res) => {
     secure: false,
     auth: {
       user: "sander.alex0909@gmail.com",
-      pass: "ukwnrwylaeurxybz",
     },
   });
 
