@@ -1,8 +1,8 @@
 ## Daycare Project with MERN stack
 
-this application is a personal daycare system that I did for my family, currently receive $12k in monthly payments, which made managing everything much easier,  no more keeping information on paper about who’s going to come this week,  who paid, etc. now all that my parents need to do is use four buttons, check-in, check-out, late and generate registration code.
+I created a simple daycare system for my family. It made managing things much easier, replacing the old way of tracking schedules and payments on paper. The system handles $12k in monthly payments, and my parents only need to use four buttons: check-in, check-out, late, and generate registration code.
 
-2024 - most users stopped using but we still have a few that need the payment plan, we're going to shut down the application soon, the last user is finishing their payments 🥳
+By 2024, most users had stopped using it, but a few still needed the payment plan. Now, we're about to shut it down as the last user is finishing their payments 🥳.
 
 <img width="1040" alt="dashboard" src="https://user-images.githubusercontent.com/98370540/216496234-2a92e76f-51a6-4109-901e-488f16a5ea64.png">
 <img width="1440" alt="managment" src="https://user-images.githubusercontent.com/98370540/216496954-a983510d-7852-44af-8ac2-52a10569901f.png">
